@@ -1,24 +1,27 @@
-"use client"
+import { Wifi, MessageSquare, Globe, Camera, Phone } from "lucide-react"
+import { Button } from "./ui/button"
 
-import { Wifi, MessageSquare, AppleIcon as Safari, Camera, Phone } from "lucide-react"
-import { Button } from "@/components/ui/button"
-
-interface InitialHomeScreenProps {
-  onNotificationClick: () => void
-  isConnectedToWifi: boolean
-}
-
-export default function InitialHomeScreen({ onNotificationClick, isConnectedToWifi }: InitialHomeScreenProps) {
+export default function HomeScreen({ onGoToTextScreen, onGoToInitialHomeScreen, isConnectedToWifi }) {
   const appIcons = [
     { name: "Phone", icon: <Phone className="w-6 h-6 text-white" />, bgColor: "bg-green-500" },
     {
       name: "Messages",
       icon: <MessageSquare className="w-6 h-6 text-white" />,
       bgColor: "bg-green-500",
-      action: onNotificationClick, // Clicking messages goes to the text screen
+      action: onGoToTextScreen,
     },
-    { name: "Safari", icon: <Safari className="w-6 h-6 text-white" />, bgColor: "bg-blue-500" },
+    {
+      name: "Safari",
+      icon: <Globe className="w-6 h-6 text-white" />,
+      bgColor: "bg-blue-500",
+      action: onGoToInitialHomeScreen,
+    },
     { name: "Camera", icon: <Camera className="w-6 h-6 text-white" />, bgColor: "bg-gray-600" },
+    {
+      name: "My Spectrum",
+      icon: <Wifi className="w-6 h-6 text-white" />,
+      bgColor: "bg-gradient-to-br from-blue-600 to-green-600",
+    },
   ]
 
   return (
@@ -47,23 +50,8 @@ export default function InitialHomeScreen({ onNotificationClick, isConnectedToWi
         </div>
       </div>
 
-      {/* Static Notification Banner (looks like a text from Spectrum) */}
-      <div
-        className="absolute top-[70px] left-0 right-0 mx-2 bg-gray-800 rounded-xl p-3 flex items-center space-x-3 cursor-pointer z-10"
-        onClick={onNotificationClick}
-      >
-        <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center shadow-lg">
-          <Wifi className="w-4 h-4 text-white" />
-        </div>
-        <div className="flex-1">
-          <p className="text-white text-sm font-medium">Spectrum</p>
-          <p className="text-gray-300 text-xs">New message: Tap to connect to WiFi.</p>
-        </div>
-        {/* Removed ChevronRight as it's not needed for a text message look */}
-      </div>
-
-      {/* App Grid - Only showing the 4 apps */}
-      <div className="flex-1 p-4 grid grid-cols-4 gap-y-3 gap-x-1 overflow-y-auto pt-28">
+      {/* App Grid */}
+      <div className="flex-1 p-4 grid grid-cols-4 gap-y-3 gap-x-1 overflow-y-auto pt-8">
         {appIcons.map((app, index) => (
           <div key={index} className="flex flex-col items-center space-y-1">
             <Button
@@ -86,12 +74,12 @@ export default function InitialHomeScreen({ onNotificationClick, isConnectedToWi
         <Button
           variant="ghost"
           className="w-14 h-14 rounded-xl flex items-center justify-center p-0 bg-green-500"
-          onClick={onNotificationClick} // Messages app in dock also goes to text screen
+          onClick={onGoToTextScreen}
         >
           <MessageSquare className="w-6 h-6 text-white" />
         </Button>
         <Button variant="ghost" className="w-14 h-14 rounded-xl flex items-center justify-center p-0 bg-blue-500">
-          <Safari className="w-6 h-6 text-white" />
+          <Globe className="w-6 h-6 text-white" />
         </Button>
         <Button variant="ghost" className="w-14 h-14 rounded-xl flex items-center justify-center p-0 bg-gray-600">
           <Camera className="w-6 h-6 text-white" />

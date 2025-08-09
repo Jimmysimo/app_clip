@@ -1,24 +1,15 @@
-"use client"
-
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "./ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
+import { Badge } from "./ui/badge"
 import { Wifi, Shield, X, Check, Download, CreditCard, Settings } from "lucide-react"
 import { useState } from "react"
-
-interface AppClipProps {
-  onAppDownloaded: () => void
-  onCloseAppClip: () => void // Used by "Maybe later" to go to initial home
-  isConnectedToWifi: boolean
-  setIsConnectedToWifi: (connected: boolean) => void
-}
 
 export default function AppClip({
   onAppDownloaded,
   onCloseAppClip,
   isConnectedToWifi,
   setIsConnectedToWifi,
-}: AppClipProps) {
+}) {
   const [showAppClipOverlay, setShowAppClipOverlay] = useState(false)
   const [isConnecting, setIsConnecting] = useState(false)
   const [isConnected, setIsConnected] = useState(false)
@@ -201,22 +192,14 @@ export default function AppClip({
                 /* WiFi Connection Screen */
                 <Card className="w-full h-full shadow-2xl border-0 rounded-t-3xl">
                   <CardHeader className="text-center pb-1 pt-3">
-                    {" "}
-                    {/* Adjusted pt and pb */}
                     {/* App Clip Header - Centered */}
                     <div className="flex items-center justify-center mb-2 relative">
-                      {" "}
-                      {/* Adjusted mb */}
                       <div className="flex flex-col items-center">
                         <Badge variant="secondary" className="text-xs px-2 py-0.5 mb-2">
-                          {" "}
-                          {/* Adjusted mb */}
                           App Clip
                         </Badge>
                         {/* Centered App Icon and Title */}
                         <div className="flex items-center justify-center mb-1">
-                          {" "}
-                          {/* Adjusted mb */}
                           <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
                             <Wifi className="w-6 h-6 text-white" />
                           </div>
@@ -236,8 +219,6 @@ export default function AppClip({
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-1.5 pb-2 px-4">
-                    {" "}
-                    {/* Adjusted space-y and pb */}
                     {/* WiFi Network Card */}
                     <div className="border rounded-xl p-3 bg-blue-50/50">
                       <div className="flex items-center space-x-3">
@@ -261,8 +242,6 @@ export default function AppClip({
                     </div>
                     {/* Action Buttons */}
                     <div className="space-y-1">
-                      {" "}
-                      {/* Adjusted space-y */}
                       <Button
                         className="w-full h-9 text-sm font-medium rounded-lg"
                         onClick={handleConnect}

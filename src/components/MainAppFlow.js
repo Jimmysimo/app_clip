@@ -1,10 +1,10 @@
 import { useState } from "react"
-import InitialHomeScreen from "./initial-home-screen"
-import AppClip from "../app-clip"
-import HomeScreen from "../home-screen"
+import InitialHomeScreen from "./InitialHomeScreen"
+import AppClip from "./AppClip"
+import HomeScreen from "./HomeScreen"
 
 export default function MainAppFlow() {
-  const [currentView, setCurrentView] = useState<"initialHome" | "messages" | "finalHome">("initialHome")
+  const [currentView, setCurrentView] = useState("initialHome")
   const [isConnectedToWifi, setIsConnectedToWifi] = useState(false)
 
   const handleGoToMessages = () => setCurrentView("messages")
