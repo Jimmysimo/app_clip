@@ -25,7 +25,7 @@ export default function HomeScreen({ onGoToTextScreen, onGoToInitialHomeScreen, 
   ]
 
   return (
-    <div className="w-[393px] h-[852px] bg-black flex flex-col relative overflow-hidden">
+    <div className="w-[393px] h-[852px] bg-black flex flex-col relative overflow-hidden mx-auto">
       {/* Dynamic Island Area */}
       <div className="h-[59px] flex justify-between items-end px-6 pb-2 text-white text-sm font-medium">
         <div className="flex items-center space-x-2">
