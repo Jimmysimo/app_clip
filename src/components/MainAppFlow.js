@@ -16,7 +16,14 @@ export default function MainAppFlow() {
   const handleGoToTextScreenFromFinalHome = () => setCurrentView("messages") // New handler for Messages app on final home
 
   return (
-    <>
+    <div 
+      className="w-full flex items-center justify-center bg-gray-100"
+      style={{ 
+        height: '100vh',
+        height: '100dvh',
+        minHeight: '100vh'
+      }}
+    >
       {currentView === "initialHome" && (
         <InitialHomeScreen onNotificationClick={handleGoToMessages} isConnectedToWifi={isConnectedToWifi} />
       )}
@@ -37,6 +44,6 @@ export default function MainAppFlow() {
           isConnectedToWifi={isConnectedToWifi}
         />
       )}
-    </>
+    </div>
   )
 }
